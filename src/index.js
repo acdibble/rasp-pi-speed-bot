@@ -17,7 +17,7 @@ mongoose.connection
 
 cron.schedule('*/10 * * * *', launchBrowser, null, true, 'America/Chicago');
 
-cron.schedule('00 * * * *', () => { console.log('need to run stats here', new Date().toISOString()); }, null, true, 'America/Chicago');
+cron.schedule('* */1 * * *', () => { console.log('need to run stats here', new Date().toISOString()); }, null, true, 'America/Chicago');
 
 app.get('/', async (req, res) => {
   launchBrowser(res);
