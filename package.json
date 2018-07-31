@@ -19,6 +19,7 @@
   "dependencies": {
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
+    "mathjs": "^5.0.4",
     "mongoose": "^5.2.6",
     "node-cron": "^1.2.1",
     "puppeteer": "^1.6.1"
