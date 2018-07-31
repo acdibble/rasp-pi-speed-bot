@@ -24,7 +24,8 @@
     "mathjs": "^5.0.4",
     "mongoose": "^5.2.6",
     "node-cron": "^1.2.1",
-    "puppeteer": "^1.6.1"
+    "puppeteer": "^1.6.1",
+    "twitter": "^1.7.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
