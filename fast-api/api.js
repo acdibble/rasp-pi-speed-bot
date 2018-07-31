@@ -8,10 +8,10 @@ const checkForSucceeded = async (res, browser, page) => {
     await browser.close();
 
     if (res) {
-      res.send({ timestamp: new Date().toISOString(), speed });
-    } else {
-      Sped.create({ speed: +speed });
+      return res.send({ timestamp: new Date().toISOString(), speed });
     }
+
+    return Sped.create({ speed: +speed });
   }
 
   return setTimeout(checkForSucceeded, 5000, res, browser, page);
