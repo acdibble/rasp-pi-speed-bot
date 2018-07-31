@@ -11,7 +11,7 @@ const checkForSucceeded = async (res, browser, page) => {
       return res.send({ timestamp: new Date().toISOString(), speed });
     }
 
-    return Sped.create({ speed: +speed });
+    return Sped.create({ speed: +speed, timestamp: new Date() });
   }
 
   return setTimeout(checkForSucceeded, 5000, res, browser, page);

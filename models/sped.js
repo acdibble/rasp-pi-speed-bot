@@ -7,7 +7,7 @@ const SpedSchema = new Schema({
   },
   timestamp: {
     type: Date,
-    default: new Date(),
+    required: true,
   },
 });
 
