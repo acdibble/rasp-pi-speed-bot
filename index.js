@@ -1,33 +1,41 @@
 import express from 'express';
-import puppeteer from 'puppeteer';
+import cron from 'node-cron';
+
+import launchBrowser from './fast-api/api';
+import writeFileAsync from './helpers/writeFileAsync';
 
 const app = express();
 
 const speeds = [];
 
-const checkForSucceeded = async (res, browser, page) => {
-  const bodyHandle = await page.$('#speed-value.succeeded');
-  if (bodyHandle) {
-    const speed = await page.evaluate(body => body.innerHTML, bodyHandle);
-    await browser.close();
+cron.schedule('*/10 * * * *', () => { launchBrowser(null, speeds); }, null, true, 'America/Chicago');
 
-    if (res) {
-      return res.send({ timestamp: new Date().toISOString(), speed });
-    }
+cron.schedule('00 * * * *', () => { console.log('need to run stats here'); }, null, true, 'America/Chicago');
 
-    return speeds.push({ timestamp: new Date().toISOString(), speed });
+cron.schedule('00 00 * * *',
+  () => {
+    writeFileAsync(`${__dirname}/logs/${new Date().toISOString().slice(0, 10)}.json`, JSON.stringify(speeds))
+      .then(() => {
+        console.log('File written');
+        speeds.splice(0);
+      });
+  }, null, true, 'America/Chicago');
+
+app.get('/shutdown', (req, res) => {
+  if (speeds.length) {
+    writeFileAsync(`${__dirname}/logs/${new Date().toISOString()}.json`, JSON.stringify(speeds))
+      .then(() => {
+        res.send('Good bye');
+        process.exit(0);
+      }, () => {
+        res.send('Error writing file');
+        process.exit(1);
+      });
   }
 
-  return setTimeout(checkForSucceeded, 5000, res, browser, page);
-};
-
-const launchBrowser = async (res) => {
-  await puppeteer.launch().then(async (browser) => {
-    const page = await browser.newPage();
-    await page.goto('https://fast.com/');
-    checkForSucceeded(res, browser, page);
-  });
-};
+  res.send('Good bye');
+  process.exit(0);
+});
 
 app.get('/', async (req, res) => {
   launchBrowser(res);

@@ -18,6 +18,7 @@
   "homepage": "https://github.com/acdibble/rasp-pi-speed-bot#readme",
   "dependencies": {
     "express": "^4.16.3",
+    "node-cron": "^1.2.1",
     "puppeteer": "^1.6.1"
   },
   "devDependencies": {
