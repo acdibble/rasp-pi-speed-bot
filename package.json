@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/acdibble/rasp-pi-speed-bot#readme",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "puppeteer": "^1.6.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
