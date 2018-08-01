@@ -13,6 +13,10 @@ const StatSchema = new Schema({
     type: Number,
     required: true,
   },
+  sampleSize: {
+    type: Date,
+    required: true,
+  },
   timestamp: {
     type: Date,
     required: true,
