@@ -1,7 +1,4 @@
-const Twitter = require('twitter');
-const dotenv = require('dotenv');
-
-dotenv.config();
+import Twitter from 'twitter';
 
 const twitterClient = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_API_KEY_PUBLIC,
