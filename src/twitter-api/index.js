@@ -10,7 +10,7 @@ const twitterClient = new Twitter({
 function composeTweet(tweetParams) {
   const tweetContent = { status: `Calculated our average speed from the past hour (${tweetParams.sampleSize} samples): ${tweetParams.speed} mbps but it's supposed to be 1000mbps :(` };
   twitterClient.post('statuses/update', tweetContent, (err) => {
-    console.log('Error posting tweet:', err);
+    if (err) console.log('Error posting tweet:', err);
   });
 }
 
