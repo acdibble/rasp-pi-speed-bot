@@ -1,0 +1,12 @@
+{
+    "apps": [
+        {
+            "name": "pi",
+            "script": "./dist",
+            "watch": true,
+            "env": {
+                "NODE_ENV": "production"
+            }
+        }
+    ]
+}
