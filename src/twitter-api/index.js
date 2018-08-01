@@ -9,11 +9,9 @@ const twitterClient = new Twitter({
 
 function composeTweet(tweetParams) {
   const tweetContent = { status: `On ${tweetParams.timestamp}, a speed test was done, and our speeds were only ${tweetParams.speed} but they should be 1000mbps :(` };
-  try {
-    twitterClient.post('statuses/update', tweetContent);
-  } catch (err) {
+  twitterClient.post('statuses/update', tweetContent, (err) => {
     console.log('Error posting tweet:', err);
-  }
+  });
 }
 
 export default composeTweet;

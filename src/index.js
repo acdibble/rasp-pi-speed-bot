@@ -1,12 +1,9 @@
 import cron from 'node-cron';
 import mongoose from 'mongoose';
-import { config } from 'dotenv';
 
-import composeTweet from './twitter-api';
+import composeTweet from './twitter-api/index';
 import launchBrowser from './fast-api/api';
 import getStatsForPast from './statistics/stats';
-
-config();
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MLAB_URI, { useNewUrlParser: true });
@@ -17,7 +14,10 @@ mongoose.connection
 cron.schedule('*/10 * * * *', launchBrowser, null, true, 'America/Chicago');
 
 cron.schedule('0 * * * *', () => {
-  getStatsForPast('hour').then((stats) => {
-    composeTweet({ speed: stats.mean, timestamp: stats.timestamp });
-  });
+  getStatsForPast('hour')
+    .then((stats) => {
+      composeTweet({ speed: stats.mean, timestamp: stats.timestamp });
+    }, (err) => {
+      console.log('Could get stats:', err);
+    });
 }, null, true, 'America/Chicago');
