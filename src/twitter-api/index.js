@@ -7,7 +7,6 @@ const twitterClient = new Twitter({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
 
-
 function composeTweet(tweetParams) {
   const tweetContent = { status: `On ${tweetParams.timestamp}, a speed test was done, and our speeds were only ${tweetParams.speed} but they should be 1000mbps :(` };
   try {

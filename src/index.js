@@ -2,7 +2,6 @@ import cron from 'node-cron';
 import mongoose from 'mongoose';
 import { config } from 'dotenv';
 
-import { Sped } from './models';
 import composeTweet from './twitter-api';
 import launchBrowser from './fast-api/api';
 import getStatsForPast from './statistics/stats';
@@ -17,20 +16,8 @@ mongoose.connection
 
 cron.schedule('*/10 * * * *', launchBrowser, null, true, 'America/Chicago');
 
-cron.schedule('0 * * * *', () => { getStatsForPast('hour'); }, null, true, 'America/Chicago');
-
-setInterval(() => {
-  Sped.find({}).sort({ timestamp: -1 }).exec((err, res) => {
-    if (res) {
-      const { speed, timestamp } = res[0];
-      if (speed < (1000 * 0.75)) {
-        composeTweet({
-          speed,
-          timestamp,
-        });
-      }
-    } else {
-      console.log('Error fetching data:', err);
-    }
+cron.schedule('0 * * * *', () => {
+  getStatsForPast('hour').then((stats) => {
+    composeTweet({ speed: stats.mean, timestamp: stats.timestamp });
   });
-}, 60 * 60 * 1000);
+}, null, true, 'America/Chicago');

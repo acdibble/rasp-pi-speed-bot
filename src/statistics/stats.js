@@ -1,18 +1,28 @@
 import { mean, std, median } from 'mathjs';
 import getSpedsFromPast from '../helpers/queries';
+import { Stat } from '../models';
 
-const getStatsForPast = async (time) => {
-  const speds = await getSpedsFromPast(time);
+const getStatsForPast = time => new Promise(async (resolve, reject) => {
+  let speds;
+  try {
+    speds = await getSpedsFromPast(time);
+  } catch (e) {
+    reject(e);
+  }
 
   const speeds = speds.map(({ speed }) => speed);
 
-  const average = mean(speeds);
-  const stdDev = std(speeds);
-  const middle = median(speeds);
+  const stats = {
+    mean: mean(speeds),
+    std: std(speeds),
+    median: median(speeds),
+    sampleSize: speeds.length,
+    timestamp: new Date(),
+  };
 
-  console.log(average, stdDev, middle);
+  Stat.create(stats);
 
-  return { mean: average, std: stdDev, median: middle };
-};
+  resolve(stats);
+});
 
 export default getStatsForPast;
