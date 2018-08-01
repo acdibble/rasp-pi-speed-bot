@@ -18,7 +18,7 @@ const checkForSucceeded = async (res, browser, page) => {
 };
 
 const launchBrowser = async (res) => {
-  const opts = process.env.PRODUCTION
+  const opts = process.env.NODE_ENV === 'production'
     ? { args: ['--no-sandbox', '--disable-setuid-sandbox', '--headless', '--disable-gpu'], executablePath: '/usr/bin/chromium-browser' }
     : {};
   const browser = await puppeteer.launch(opts);
