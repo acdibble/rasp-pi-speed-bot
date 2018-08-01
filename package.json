@@ -6,7 +6,7 @@
   "scripts": {
     "start": "./node_modules/.bin/nodemon ./node_modules/.bin/babel-node src",
     "build": "./node_modules/.bin/babel src -d dist",
-    "pi": "pm2 start pm2.json"
+    "pi": "npm run build && pm2 start pm2.json"
   },
   "repository": {
     "type": "git",
