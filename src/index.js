@@ -6,6 +6,7 @@ import { config } from 'dotenv';
 import Sped from './models/sped';
 import composeTweet from './twitter-api';
 import launchBrowser from './fast-api/api';
+import getStatsForPast from './statistics/stats';
 
 config();
 
@@ -19,7 +20,7 @@ mongoose.connection
 
 cron.schedule('*/10 * * * *', launchBrowser, null, true, 'America/Chicago');
 
-cron.schedule('00 */1 * * *', () => { console.log('need to run stats here', new Date().toISOString()); }, null, true, 'America/Chicago');
+cron.schedule('00 */1 * * *', () => { getStatsForPast('hour'); }, null, true, 'America/Chicago');
 
 setInterval(() => {
   Sped.find({}).sort({ timestamp: -1 }).exec((err, res) => {
