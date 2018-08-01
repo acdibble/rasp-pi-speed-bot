@@ -2,6 +2,8 @@
 
 A bot built to gather network speeds over time and communicate to AT&T how much they underperform.
 
+Tweets can be seen at [@DibCribSpeed](https://twitter.com/DibCribSpeed)
+
 ## Third Party Libraries
 
 ### App
