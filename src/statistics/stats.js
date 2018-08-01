@@ -1,10 +1,8 @@
 import { mean, std, median } from 'mathjs';
-import { getSpedsFromPastHour, getSpedsFromPastDay } from '../helpers/queries';
+import getSpesFromPast from '../helpers/queries';
 
 const getStatsForPast = async (time) => {
-  const speds = time === 'hour'
-    ? await getSpedsFromPastHour()
-    : await getSpedsFromPastDay();
+  const speds = await getSpesFromPast(time);
 
   const speeds = speds.map(({ speed }) => speed);
 
