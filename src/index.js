@@ -20,7 +20,7 @@ mongoose.connection
 
 cron.schedule('*/10 * * * *', launchBrowser, null, true, 'America/Chicago');
 
-cron.schedule('00 */1 * * *', () => { getStatsForPast('hour'); }, null, true, 'America/Chicago');
+cron.schedule('0 * * * *', () => { getStatsForPast('hour'); }, null, true, 'America/Chicago');
 
 setInterval(() => {
   Sped.find({}).sort({ timestamp: -1 }).exec((err, res) => {
