@@ -41,7 +41,7 @@ $ npm install
 Start the development server at [http://localhost:3000](http://localhost:3000) (implicitly rebuilds on code changes):
 
 ```sh
-$ npm start
+$ npm run dev
 ```
 
 ## Style Guide
