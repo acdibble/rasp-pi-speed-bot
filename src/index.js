@@ -2,7 +2,7 @@ import cron from 'node-cron';
 import mongoose from 'mongoose';
 import { config } from 'dotenv';
 
-import Sped from './models/sped';
+import Sped from './models';
 import composeTweet from './twitter-api';
 import launchBrowser from './fast-api/api';
 import getStatsForPast from './statistics/stats';

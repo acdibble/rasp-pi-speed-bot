@@ -1,5 +1,5 @@
 import puppeteer from 'puppeteer';
-import Sped from '../models/sped';
+import Sped from '../models';
 
 const checkForSucceeded = async (res, browser, page) => {
   const bodyHandle = await page.$('#speed-value.succeeded');

@@ -1,4 +1,4 @@
-import Sped from '../models/sped';
+import Sped from '../models';
 
 const conversions = {
   hour: 3600000,
