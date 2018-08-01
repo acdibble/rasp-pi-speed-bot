@@ -2,9 +2,9 @@ import puppeteer from 'puppeteer';
 import { Sped } from '../models';
 
 const checkForSucceeded = async (browser, page) => {
-  const bodyHandle = await page.$('#speed-value.succeeded');
-  if (bodyHandle) {
-    const speed = await page.evaluate(body => body.innerHTML, bodyHandle);
+  const elHandle = await page.$('#speed-value.succeeded');
+  if (elHandle) {
+    const speed = await page.evaluate(el => el.innerHTML, elHandle);
     await browser.close();
 
     return Sped.create({ speed: +speed, timestamp: new Date() });
