@@ -1,4 +1,3 @@
-import express from 'express';
 import cron from 'node-cron';
 import mongoose from 'mongoose';
 import { config } from 'dotenv';
@@ -9,8 +8,6 @@ import launchBrowser from './fast-api/api';
 import getStatsForPast from './statistics/stats';
 
 config();
-
-const app = express();
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MLAB_URI, { useNewUrlParser: true });
@@ -37,9 +34,3 @@ setInterval(() => {
     }
   });
 }, 60 * 60 * 1000);
-
-app.get('/', async (req, res) => {
-  launchBrowser(res);
-});
-
-app.listen(3000, () => console.log('Listening on 3000.'));
