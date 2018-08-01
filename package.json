@@ -8,7 +8,7 @@
     "build": "./node_modules/.bin/babel src -d dist",
     "start": "npm run build && pm2 start pm2.json",
     "stop": "pm2 kill",
-    "restart": "npm run build && pm2 restart 0"
+    "restart": "npm run build && pm2 restart HotSpotlight"
   },
   "repository": {
     "type": "git",
