@@ -16,7 +16,7 @@ cron.schedule('*/10 * * * *', launchBrowser, null, true, 'America/Chicago');
 cron.schedule('0 * * * *', () => {
   getStatsForPast('hour')
     .then((stats) => {
-      composeTweet({ speed: stats.mean, timestamp: stats.timestamp });
+      composeTweet(stats);
     }, (err) => {
       console.log('Could get stats:', err);
     });
