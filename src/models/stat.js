@@ -5,11 +5,19 @@ const StatSchema = new Schema({
     type: Number,
     required: true,
   },
+  std: {
+    type: Number,
+    required: true,
+  },
+  min: {
+    type: Number,
+    required: true,
+  },
   median: {
     type: Number,
     required: true,
   },
-  std: {
+  max: {
     type: Number,
     required: true,
   },
