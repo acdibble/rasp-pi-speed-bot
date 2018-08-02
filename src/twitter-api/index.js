@@ -1,4 +1,5 @@
 import Twitter from 'twitter';
+import getTweet from './tweets';
 
 const twitterClient = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_API_KEY_PUBLIC,
@@ -8,8 +9,8 @@ const twitterClient = new Twitter({
 });
 
 function composeTweet(tweetParams) {
-  const tweetContent = { status: `Calculated our average speed from the past hour (${tweetParams.sampleSize} samples): ${tweetParams.mean} mbps but it's supposed to be 1000mbps :(` };
-  twitterClient.post('statuses/update', tweetContent, (err) => {
+  const tweet = getTweet(tweetParams, 'pastHour');
+  twitterClient.post('statuses/update', tweet, (err) => {
     if (err) console.log('Error posting tweet:', err);
   });
 }
