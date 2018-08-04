@@ -9,7 +9,7 @@
     "start": "npm run build && pm2 start pm2.json",
     "stop": "pm2 kill",
     "restart": "npm run build && pm2 restart HotSpotlight",
-    "test": "cross-env NODE_ENV=test nyc --all --reporter=text mocha 'test/**/*.test.js' --exit",
+    "test": "cross-env NODE_ENV=test nyc --all --reporter=text mocha -r dotenv/config 'test/**/*.test.js' --exit",
     "posttest": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100"
   },
   "repository": {
