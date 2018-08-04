@@ -13,11 +13,13 @@ const runTest = () => {
     console.debug('Speed test error:', err);
   });
 
-  test.on('done', ({ downloadSpeed, uploadSpeed }) => {
-    console.info('Test complete.');
+  test.on('done', ({ downloadSpeed: ds, uploadSpeed: us }) => {
+    const downloadSpeed = ds * 8 / 1000000;
+    const uploadSpeed = us * 8 / 1000000;
+    console.info(`Test complete. DL: ${downloadSpeed}, UL: ${uploadSpeed}`);
     Sped.create({
-      downloadSpeed: downloadSpeed * 8 / 1000000,
-      uploadSpeed: uploadSpeed * 8 / 1000000,
+      downloadSpeed,
+      uploadSpeed,
       timestamp: new Date(),
     });
   });
