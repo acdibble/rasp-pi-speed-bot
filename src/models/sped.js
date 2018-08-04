@@ -1,7 +1,11 @@
 import mongoose, { Schema } from 'mongoose';
 
 const SpedSchema = new Schema({
-  speed: {
+  downloadSpeed: {
+    type: Number,
+    required: true,
+  },
+  uploadSpeed: {
     type: Number,
     required: true,
   },

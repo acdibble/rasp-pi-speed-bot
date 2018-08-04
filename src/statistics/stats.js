@@ -10,7 +10,7 @@ const getStatsForPast = time => new Promise(async (resolve, reject) => {
     reject(e);
   }
 
-  const speeds = speds.map(({ speed }) => speed).sort((a, b) => a - b);
+  const speeds = speds.map(({ downloadSpeed }) => downloadSpeed).sort((a, b) => a - b);
 
   const stats = {
     mean: mean(speeds),
