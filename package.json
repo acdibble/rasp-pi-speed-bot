@@ -25,7 +25,7 @@
     "mathjs": "^5.0.4",
     "mongoose": "^5.2.6",
     "node-cron": "^1.2.1",
-    "puppeteer": "^1.6.1",
+    "speedtest-net": "^1.4.3",
     "twitter": "^1.7.1"
   },
   "devDependencies": {
