@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 
 import composeTweet from './twitter-api/index';
 import launchBrowser from './fast-api/api';
-import getStatsForPast from './statistics/stats';
+import calculateStatsForPast from './statistics/stats';
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MLAB_URI, { useNewUrlParser: true });
@@ -14,9 +14,9 @@ mongoose.connection
 cron.schedule('*/10 * * * *', launchBrowser, null, true, 'America/Chicago');
 
 cron.schedule('0 * * * *', () => {
-  getStatsForPast('hour')
+  calculateStatsForPast('hour')
     .then((stats) => {
-      composeTweet(stats);
+      composeTweet(stats, 'pastHour');
     }, (err) => {
       console.log('Could get stats:', err);
     });

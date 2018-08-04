@@ -7,4 +7,9 @@ const conversions = {
 
 const getSpedsFromPast = time => Sped.find({ timestamp: { $gte: new Date() - conversions[time] } });
 
-export default getSpedsFromPast;
+const createNewSped = speed => Sped.create({ speed, timestamp: new Date() });
+
+export {
+  getSpedsFromPast,
+  createNewSped,
+};

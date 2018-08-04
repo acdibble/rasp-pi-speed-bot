@@ -1,8 +1,8 @@
 import { mean, std, median } from 'mathjs';
-import getSpedsFromPast from '../helpers/queries';
+import { getSpedsFromPast } from '../helpers/queries';
 import { Stat } from '../models';
 
-const getStatsForPast = time => new Promise(async (resolve, reject) => {
+const calculateStatsForPast = time => new Promise(async (resolve, reject) => {
   let speds;
   try {
     speds = await getSpedsFromPast(time);
@@ -27,4 +27,4 @@ const getStatsForPast = time => new Promise(async (resolve, reject) => {
   resolve(stats);
 });
 
-export default getStatsForPast;
+export default calculateStatsForPast;
