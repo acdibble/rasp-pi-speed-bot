@@ -16,7 +16,11 @@ cron.schedule('*/10 * * * *', runSpeedTest, null, true, 'America/Chicago');
 cron.schedule('0 * * * *', () => {
   calculateStatsForPast('hour')
     .then((stats) => {
-      composeTweet(stats, 'pastHour');
+      if (stats.sampleSize < 5) {
+        console.log('Not enough samples');
+      } else {
+        composeTweet(stats, 'pastHour');
+      }
     }, (err) => {
       console.debug('Could get stats:', err);
     });
