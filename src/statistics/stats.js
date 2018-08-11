@@ -1,6 +1,6 @@
-import { mean, std, median } from 'mathjs';
-import { getSpedsFromPast } from '../helpers/queries';
-import { Stat } from '../models';
+const { mean, std, median } = require('mathjs');
+const { getSpedsFromPast } = require('../helpers/queries');
+const { Stat } = require('../models');
 
 const calculateStatsForPast = time => new Promise(async (resolve, reject) => {
   let speds;
@@ -27,4 +27,4 @@ const calculateStatsForPast = time => new Promise(async (resolve, reject) => {
   resolve(stats);
 });
 
-export default calculateStatsForPast;
+module.exports = calculateStatsForPast;

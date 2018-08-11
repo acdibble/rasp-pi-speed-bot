@@ -1,4 +1,4 @@
-import { Sped } from '../models';
+const { Sped } = require('../models');
 
 const conversions = {
   hour: 3600000,
@@ -9,7 +9,7 @@ const getSpedsFromPast = time => Sped.find({ timestamp: { $gte: new Date() - con
 
 const createNewSped = speed => Sped.create({ speed, timestamp: new Date() });
 
-export {
+module.exports = {
   getSpedsFromPast,
   createNewSped,
 };

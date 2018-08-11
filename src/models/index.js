@@ -1,4 +1,4 @@
-import Sped from './sped';
-import Stat from './stat';
+const Sped = require('./sped');
+const Stat = require('./stat');
 
-export { Sped, Stat };
+module.exports = { Sped, Stat };

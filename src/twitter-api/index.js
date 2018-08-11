@@ -1,5 +1,5 @@
-import Twitter from 'twitter';
-import tweets from './tweets';
+const Twitter = require('twitter');
+const tweets = require('./tweets');
 
 const twitterClient = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_API_KEY_PUBLIC,
@@ -15,4 +15,4 @@ function composeTweet(tweetParams, name) {
   });
 }
 
-export default composeTweet;
+module.exports = composeTweet;

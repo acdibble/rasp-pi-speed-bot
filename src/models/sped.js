@@ -1,4 +1,6 @@
-import mongoose, { Schema } from 'mongoose';
+const mongoose = require('mongoose');
+
+const { Schema } = mongoose;
 
 const SpedSchema = new Schema({
   speed: {
@@ -11,4 +13,4 @@ const SpedSchema = new Schema({
   },
 });
 
-export default mongoose.model('sped', SpedSchema);
+module.exports = mongoose.model('sped', SpedSchema);

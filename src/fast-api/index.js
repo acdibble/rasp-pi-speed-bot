@@ -1,11 +1,26 @@
-import FastSpeedtest from 'fast-speedtest-api';
-import { createNewSped } from '../helpers/queries';
+const puppeteer = require('puppeteer');
+const { Sped } = require('../models');
 
-const speedtest = new FastSpeedtest({
-  token: process.env.FAST_TOKEN,
-  verbose: false,
-  timeout: 20000,
-  unit: FastSpeedtest.UNITS.Mbps,
-});
+const checkForSucceeded = async (browser, page) => {
+  const elHandle = await page.$('#speed-value.succeeded');
+  if (elHandle) {
+    const speed = await page.evaluate(el => el.innerHTML, elHandle);
+    await browser.close();
 
-export default () => speedtest.getSpeed().then(speed => createNewSped(speed));
+    return Sped.create({ speed: +speed, timestamp: new Date() });
+  }
+
+  return setTimeout(checkForSucceeded, 5000, browser, page);
+};
+
+const launchBrowser = async () => {
+  const opts = process.env.NODE_ENV === 'production'
+    ? { args: ['--no-sandbox', '--disable-setuid-sandbox', '--headless', '--disable-gpu'], executablePath: '/usr/bin/chromium-browser' }
+    : {};
+  const browser = await puppeteer.launch(opts);
+  const page = await browser.newPage();
+  await page.goto('https://fast.com/');
+  checkForSucceeded(browser, page);
+};
+
+module.exports = launchBrowser;
