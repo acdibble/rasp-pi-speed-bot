@@ -1,4 +1,6 @@
-import mongoose, { Schema } from 'mongoose';
+const mongoose = require('mongoose');
+
+const { Schema } = mongoose;
 
 const StatSchema = new Schema({
   mean: {
@@ -31,4 +33,4 @@ const StatSchema = new Schema({
   },
 });
 
-export default mongoose.model('stat', StatSchema);
+module.exports = mongoose.model('stat', StatSchema);
