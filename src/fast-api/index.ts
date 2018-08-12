@@ -2,12 +2,12 @@ import puppeteer from 'puppeteer';
 import { Sped } from '../models';
 
 const checkForSucceeded = async (browser: puppeteer.Browser, page: puppeteer.Page) => {
-  const elHandle: puppeteer.ElementHandle | null = await page.$('#speed-value.succeeded');
+  const elHandle = await page.$('#speed-value.succeeded');
   if (elHandle) {
     const speed: string = await page.evaluate(el => el.innerHTML, elHandle);
     await browser.close();
 
-    return Sped.create({ speed: +speed, timestamp: new Date() });
+    return Sped.create({ speed: +speed });
   }
 
   return setTimeout(checkForSucceeded, 5000, browser, page);

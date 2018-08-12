@@ -1,14 +1,14 @@
 interface ITweetParams {
-    sampleSize: number,
-    mean: number,
+    sampleSize: number;
+    mean: number;
 }
 
 interface ITweet {
-    status: string,
+    status: string;
 }
 
 interface ITweets {
-    [key: string]: (arg0: ITweetParams) => ITweet,
+    [key: string]: (arg0: ITweetParams) => ITweet;
 }
 
 export { ITweetParams, ITweet, ITweets };

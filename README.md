@@ -13,7 +13,7 @@ Tweets can be seen at [@DibCribSpeed](https://twitter.com/DibCribSpeed)
 * [mongoose](https://github.com/Automattic/mongoose) - MongoDB ODM
 * [node-cron](https://github.com/kelektiv/node-cron) - Cron for NodeJS
 * [puppeteer](https://github.com/GoogleChrome/puppeteer) - Headless Chrome Node API
-* [twitter](https://www.npmjs.com/package/twitter) - Twitter API
+* [request](https://github.com/request/request) - Simplified HTTP request client
 
 ### Dev Tooling
 

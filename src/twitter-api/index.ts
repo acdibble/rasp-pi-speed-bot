@@ -1,17 +1,12 @@
-const Twitter: any = require('twitter');
+import TwitterClient from './api';
 import tweets from './tweets';
 import { ITweetParams } from '../../types';
 
-const twitterClient = new Twitter({
-  consumer_key: process.env.TWITTER_CONSUMER_API_KEY_PUBLIC!,
-  consumer_secret: process.env.TWITTER_CONSUMER_API_KEY_SECRET!,
-  access_token_key: process.env.TWITTER_ACCESS_TOKEN_PUBLIC!,
-  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET!,
-});
+const tc = new TwitterClient();
 
 function composeTweet(tweetParams: ITweetParams, name: string) {
   const tweet = tweets[name](tweetParams);
-  twitterClient.post('statuses/update', tweet, (err: Error) => {
+  tc.sendTweet(tweet, (err: Error) => {
     if (err) console.log('Error posting tweet:', err);
   });
 }
