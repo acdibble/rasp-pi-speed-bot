@@ -40,6 +40,7 @@ $ npm install
 
 ## Start
 
+Requires Node >=10.8.0
 Start the development server at [http://localhost:3000](http://localhost:3000) (implicitly rebuilds on code changes):
 
 ```sh

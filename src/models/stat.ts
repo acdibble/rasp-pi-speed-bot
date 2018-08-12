@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+import { IStat } from '../../types';
 
 const { Schema } = mongoose;
 
@@ -24,13 +25,14 @@ const StatSchema = new Schema({
     required: true,
   },
   sampleSize: {
-    type: Date,
+    type: Number,
     required: true,
   },
   timestamp: {
     type: Date,
+    default: Date.now,
     required: true,
   },
 });
 
-module.exports = mongoose.model('stat', StatSchema);
+export default mongoose.model<IStat>('stat', StatSchema);

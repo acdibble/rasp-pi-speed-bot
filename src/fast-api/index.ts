@@ -1,10 +1,10 @@
-const puppeteer = require('puppeteer');
-const { Sped } = require('../models');
+import puppeteer from 'puppeteer';
+import { Sped } from '../models';
 
-const checkForSucceeded = async (browser, page) => {
-  const elHandle = await page.$('#speed-value.succeeded');
+const checkForSucceeded = async (browser: puppeteer.Browser, page: puppeteer.Page) => {
+  const elHandle: puppeteer.ElementHandle | null = await page.$('#speed-value.succeeded');
   if (elHandle) {
-    const speed = await page.evaluate(el => el.innerHTML, elHandle);
+    const speed: string = await page.evaluate(el => el.innerHTML, elHandle);
     await browser.close();
 
     return Sped.create({ speed: +speed, timestamp: new Date() });
@@ -23,4 +23,4 @@ const launchBrowser = async () => {
   checkForSucceeded(browser, page);
 };
 
-module.exports = launchBrowser;
+export default launchBrowser;

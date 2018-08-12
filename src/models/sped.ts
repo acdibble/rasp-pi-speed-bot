@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+import { ISped } from '../../types';
 
 const { Schema } = mongoose;
 
@@ -13,4 +14,6 @@ const SpedSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model('sped', SpedSchema);
+export default mongoose.model<ISped>('sped', SpedSchema);
+
+

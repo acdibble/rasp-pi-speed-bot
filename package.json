@@ -4,7 +4,7 @@
   "description": "",
   "main": "src",
   "scripts": {
-    "dev": "./node_modules/.bin/nodemon -r dotenv/config src",
+    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
     "start": "pm2 start pm2.json",
     "stop": "pm2 kill",
     "restart": "pm2 restart HotSpotlight",
@@ -31,14 +31,17 @@
     "twitter": "^1.7.1"
   },
   "devDependencies": {
+    "@types/mathjs": "^4.4.1",
+    "@types/mongoose": "^5.2.5",
+    "@types/node-cron": "^1.2.0",
+    "@types/puppeteer": "^1.6.0",
     "chai": "^4.1.2",
     "cross-env": "^5.2.0",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb-base": "^13.0.0",
-    "eslint-plugin-import": "^2.13.0",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.3",
-    "nyc": "11.4.0"
+    "nyc": "11.4.0",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.0.1"
   },
   "nyc": {
     "reporter": [
