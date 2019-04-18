@@ -11,7 +11,7 @@ mongoose.connection
   .once('open', () => console.log('Connected to MongoLab instance.'))
   .on('error', error => console.log('Error connecting to MongoLab:', error));
 
-cron.schedule('*/1 * * * *', getSpeed);
+cron.schedule('*/10 * * * *', getSpeed);
 
 cron.schedule('0 * * * *', () => {
   calculateStatsForPast('hour')
