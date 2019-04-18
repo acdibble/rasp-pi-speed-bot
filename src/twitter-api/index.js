@@ -10,7 +10,7 @@ const twitterClient = new Twitter({
 
 function composeTweet(tweetParams, name) {
   const tweet = tweets[name](tweetParams);
-  twitterClient.post('statuses/update', tweet, (err) => {
+  twitterClient.post('statuses/update', tweet, err => {
     if (err) console.log('Error posting tweet:', err);
   });
 }

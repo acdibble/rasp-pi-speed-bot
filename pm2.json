@@ -1,12 +1,12 @@
 {
-    "apps": [
-        {
-            "name": "HotSpotlight",
-            "script": "./src",
-            "watch": true,
-            "env": {
-                "NODE_ENV": "production"
-            }
-        }
-    ]
+  "apps": [
+    {
+      "name": "HotSpotlight",
+      "script": "./src",
+      "watch": true,
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  ]
 }

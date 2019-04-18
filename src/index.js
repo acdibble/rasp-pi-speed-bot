@@ -14,14 +14,16 @@ mongoose.connection
 cron.schedule('*/10 * * * *', getSpeed);
 
 cron.schedule('0 * * * *', () => {
-  calculateStatsForPast('hour')
-    .then((stats) => {
+  calculateStatsForPast('hour').then(
+    stats => {
       if (stats.sampleSize < 5) {
         console.log('Not enough samples');
       } else {
         composeTweet(stats, 'pastHour');
       }
-    }, (err) => {
+    },
+    err => {
       console.debug('Could get stats:', err);
-    });
+    },
+  );
 });

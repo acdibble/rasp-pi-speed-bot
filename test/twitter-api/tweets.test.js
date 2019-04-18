@@ -11,6 +11,8 @@ describe('Tweets', () => {
     };
     const tweet = 'pastHour';
     const text = tweets[tweet](tweetParams);
-    text.status.should.equal('Calculated our average speed from the past hour (6 samples): 100.0mbps, but we are paying for 1000mbps. #ATTDoesNotCare #ATTCaresAboutMoney');
+    text.status.should.equal(
+      'Calculated our average speed from the past hour (6 samples): 100.0mbps, but we are paying for 1000mbps. #ATTDoesNotCare #ATTCaresAboutMoney',
+    );
   });
 });

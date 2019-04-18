@@ -2,7 +2,7 @@ const { mean, std, median } = require('mathjs');
 const { getSpedsFromPast } = require('../helpers/queries');
 const { Stat } = require('../models');
 
-const calculateStatsForPast = async (time) => {
+const calculateStatsForPast = async time => {
   const speds = await getSpedsFromPast(time);
 
   const speeds = speds.map(({ speed }) => speed).sort((a, b) => a - b);

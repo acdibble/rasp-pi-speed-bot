@@ -6,7 +6,8 @@ const execAsync = promisify(exec);
 
 const getSpeed = async () => {
   const { stdout } = await execAsync('speedtest');
-  const speed = stdout.split('\n')
+  const speed = stdout
+    .split('\n')
     .find(line => line.startsWith('Download:'))
     .split(' ')[1];
 
