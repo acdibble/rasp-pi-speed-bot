@@ -1,26 +1,20 @@
-const puppeteer = require('puppeteer');
+const { exec } = require('child_process');
+const { promisify } = require('util');
 const { Sped } = require('../models');
 
-const checkForSucceeded = async (browser, page) => {
-  const elHandle = await page.$('#speed-value.succeeded');
-  if (elHandle) {
-    const speed = await page.evaluate(el => el.innerHTML, elHandle);
-    await browser.close();
+const execAsync = promisify(exec);
 
-    return Sped.create({ speed: +speed, timestamp: new Date() });
-  }
+const getSpeed = async () => {
+  console.log('starting test');
 
-  return setTimeout(checkForSucceeded, 5000, browser, page);
+  const { stdout } = await execAsync('speedtest');
+  const speed = stdout.split('\n')
+    .find(line => line.startsWith('Download:'))
+    .split(' ')[1];
+
+  console.log('Got speed', speed);
+
+  return Sped.create({ speed: +speed, timestamp: new Date() });
 };
 
-const launchBrowser = async () => {
-  const opts = process.env.NODE_ENV === 'production'
-    ? { args: ['--no-sandbox', '--disable-setuid-sandbox', '--headless', '--disable-gpu'], executablePath: '/usr/bin/chromium-browser' }
-    : {};
-  const browser = await puppeteer.launch(opts);
-  const page = await browser.newPage();
-  await page.goto('https://fast.com/');
-  checkForSucceeded(browser, page);
-};
-
-module.exports = launchBrowser;
+module.exports = getSpeed;
