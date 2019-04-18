@@ -2,13 +2,8 @@ const { mean, std, median } = require('mathjs');
 const { getSpedsFromPast } = require('../helpers/queries');
 const { Stat } = require('../models');
 
-const calculateStatsForPast = time => new Promise(async (resolve, reject) => {
-  let speds;
-  try {
-    speds = await getSpedsFromPast(time);
-  } catch (e) {
-    reject(e);
-  }
+const calculateStatsForPast = async (time) => {
+  const speds = await getSpedsFromPast(time);
 
   const speeds = speds.map(({ speed }) => speed).sort((a, b) => a - b);
 
@@ -24,7 +19,7 @@ const calculateStatsForPast = time => new Promise(async (resolve, reject) => {
 
   Stat.create(stats);
 
-  resolve(stats);
-});
+  return stats;
+};
 
 module.exports = calculateStatsForPast;
