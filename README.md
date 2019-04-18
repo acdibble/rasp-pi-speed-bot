@@ -8,21 +8,29 @@ Tweets can be seen at [@DibCribSpeed](https://twitter.com/DibCribSpeed)
 
 ### App
 
-* [dotenv](https://github.com/motdotla/dotenv) - Environment variable handler
-* [mathjs](http://mathjs.org/) - JS math library
-* [mongoose](https://github.com/Automattic/mongoose) - MongoDB ODM
-* [node-cron](https://github.com/kelektiv/node-cron) - Cron for NodeJS
-* [puppeteer](https://github.com/GoogleChrome/puppeteer) - Headless Chrome Node API
-* [twitter](https://www.npmjs.com/package/twitter) - Twitter API
+- [dotenv](https://github.com/motdotla/dotenv) - Environment variable handler
+- [mathjs](http://mathjs.org/) - JS math library
+- [mongoose](https://github.com/Automattic/mongoose) - MongoDB ODM
+- [node-cron](https://github.com/kelektiv/node-cron) - Cron for NodeJS
+- [twitter](https://www.npmjs.com/package/twitter) - Twitter API
 
 ### Dev Tooling
 
-* [eslint](https://eslint.org/) - JS linter
-* [nodemon](https://github.com/remy/nodemon) - Change monitor
+- [cross-env](https://github.com/kentcdodds/cross-env) - Environment scripts
+- [eslint](https://eslint.org/) - JS linter
+- [eslint-config-airbnb-base](https://github.com/airbnb/javascript) - Linting style guide
+- [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import) - Proper import guide
+- [nodemon](https://github.com/remy/nodemon) - Watcher
+
+### Testing
+
+- [chai](https://github.com/chaijs/chai) - Assertion framework
+- [mocha](https://github.com/mochajs/mocha) - Test framework
+- [nyc](https://github.com/istanbuljs/nyc) - Istanbul CLI
 
 ### Build Tooling
 
-* [babel](https://babeljs.io/) - JS compiler
+- [babel](https://babeljs.io/) - JS compiler
 
 ## Setup
 
