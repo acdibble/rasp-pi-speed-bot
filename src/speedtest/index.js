@@ -1,16 +1,16 @@
 const { exec } = require('child_process');
 const { promisify } = require('util');
-const { Sped } = require('../models');
+const { insertSpeed } = require('../db/index');
 
 const execAsync = promisify(exec);
 
-const getSpeed = async () => {
+const measureSpeed = async () => {
   const { stdout } = await execAsync('speedtest');
   const speed = stdout.split('\n')
     .find(line => line.startsWith('Download:'))
     .split(' ')[1];
 
-  return Sped.create({ speed: +speed, timestamp: new Date() });
+  return insertSpeed(+speed);
 };
 
-module.exports = getSpeed;
+module.exports = measureSpeed;

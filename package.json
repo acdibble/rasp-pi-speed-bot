@@ -8,8 +8,7 @@
     "start": "pm2 start pm2.json",
     "stop": "pm2 kill",
     "restart": "pm2 restart HotSpotlight",
-    "test": "cross-env NODE_ENV=test nyc --all --reporter=text mocha 'test/**/*.test.js' --exit",
-    "posttest": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100"
+    "test": "cross-env NODE_ENV=test nyc mocha test/**/*.test.js --exit"
   },
   "repository": {
     "type": "git",
@@ -22,28 +21,19 @@
   },
   "homepage": "https://github.com/acdibble/rasp-pi-speed-bot#readme",
   "dependencies": {
-    "dotenv": "^6.0.0",
-    "mathjs": "^5.0.4",
-    "mongoose": "^5.5.2",
     "node-cron": "^1.2.1",
+    "sqlite3": "^4.0.6",
     "twitter": "^1.7.1"
   },
   "devDependencies": {
     "chai": "^4.1.2",
     "cross-env": "^5.2.0",
-    "eslint": "^4.19.1",
+    "dotenv": "^6.2.0",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-plugin-import": "^2.13.0",
     "mocha": "^5.2.0",
-    "nodemon": "^1.18.3",
-    "nyc": "11.4.0"
-  },
-  "nyc": {
-    "reporter": [
-      "lcov",
-      "text"
-    ],
-    "sourceMap": false,
-    "instrument": false
+    "nodemon": "^1.18.11",
+    "nyc": "^14.0.0"
   }
 }
