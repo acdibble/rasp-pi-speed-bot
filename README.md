@@ -1,4 +1,4 @@
-# HotSpotlight
+# HotSpotlight [![Build Status](https://travis-ci.org/acdibble/rasp-pi-speed-bot.svg?branch=master)](https://travis-ci.org/acdibble/rasp-pi-speed-bot) [![Coverage Status](https://coveralls.io/repos/github/acdibble/rasp-pi-speed-bot/badge.svg?branch=master)](https://coveralls.io/github/acdibble/rasp-pi-speed-bot?branch=master)
 
 A bot built to gather network speeds over time and communicate to AT&T how much they underperform.
 

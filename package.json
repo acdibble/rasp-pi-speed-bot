@@ -8,7 +8,8 @@
     "start": "pm2 start pm2.json",
     "stop": "pm2 kill",
     "restart": "pm2 restart HotSpotlight",
-    "test": "cross-env NODE_ENV=test nyc mocha test/**/*.test.js --exit"
+    "test": "cross-env NODE_ENV=test nyc mocha test/**/*.test.js --exit",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -27,10 +28,11 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
+    "coveralls": "^3.0.3",
     "cross-env": "^5.2.0",
     "dotenv": "^6.2.0",
     "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.13.0",
     "mocha": "^5.2.0",
     "nock": "^10.0.6",
