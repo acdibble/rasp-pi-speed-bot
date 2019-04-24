@@ -2,7 +2,7 @@
     "apps": [
         {
             "name": "HotSpotlight",
-            "script": "./src",
+            "script": "./run.js",
             "watch": true,
             "env": {
                 "NODE_ENV": "production"
