@@ -8,11 +8,15 @@ const twitterClient = new Twitter({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
 
-function composeTweet(tweetParams, name) {
+const composeTweet = (tweetParams, name) => new Promise((resolve, reject) => {
   const tweet = tweets[name](tweetParams);
   twitterClient.post('statuses/update', tweet, (err) => {
-    if (err) console.log('Error posting tweet:', err);
+    if (err) {
+      reject(err);
+    } else {
+      resolve('tweet sent');
+    }
   });
-}
+});
 
 module.exports = composeTweet;
