@@ -9,8 +9,6 @@ Tweets can be seen at [@DibCribSpeed](https://twitter.com/DibCribSpeed)
 ### App
 
 - [dotenv](https://github.com/motdotla/dotenv) - Environment variable handler
-- [mathjs](http://mathjs.org/) - JS math library
-- [mongoose](https://github.com/Automattic/mongoose) - MongoDB ODM
 - [node-cron](https://github.com/kelektiv/node-cron) - Cron for NodeJS
 - [twitter](https://www.npmjs.com/package/twitter) - Twitter API
 
@@ -27,10 +25,6 @@ Tweets can be seen at [@DibCribSpeed](https://twitter.com/DibCribSpeed)
 - [chai](https://github.com/chaijs/chai) - Assertion framework
 - [mocha](https://github.com/mochajs/mocha) - Test framework
 - [nyc](https://github.com/istanbuljs/nyc) - Istanbul CLI
-
-### Build Tooling
-
-- [babel](https://babeljs.io/) - JS compiler
 
 ## Setup
 
