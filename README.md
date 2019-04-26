@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.org/acdibble/rasp-pi-speed-bot.svg?branch=master)](https://travis-ci.org/acdibble/rasp-pi-speed-bot)
 [![Coverage Status](https://coveralls.io/repos/github/acdibble/rasp-pi-speed-bot/badge.svg?branch=master)](https://coveralls.io/github/acdibble/rasp-pi-speed-bot?branch=master)
 [![Dependencies](https://david-dm.org/acdibble/rasp-pi-speed-bot.svg)](https://david-dm.org/acdibble/rasp-pi-speed-bot)
+[![devDependencies Status](https://david-dm.org/acdibble/rasp-pi-speed-bot/dev-status.svg)](https://david-dm.org/acdibble/rasp-pi-speed-bot?type=dev)
 
 A bot built to gather network speeds over time and communicate to AT&T how much they underperform.
 
